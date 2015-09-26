@@ -66,6 +66,7 @@ router.put("/:id", function(req, res){
 })
 
 router.delete("/:id", function(req, res){
+  console.log("hitting delete route");
   console.log(req.params.id);
   Animal.remove({_id: req.params.id}, function(err, removedAnimal){
     if (err) console.log(err);
