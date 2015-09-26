@@ -54,7 +54,22 @@ router.post("/", function(req, res){
     if (err) console.log(err);
     res.json(newAnimal);
   })
+})
 
+router.put("/:id", function(req, res){
+  console.log(req.body.status);
+  Animal.update({_id: req.params.id}, {status: req.body.status}, function(err, updatedAnimal){
+    if (err) console.log(err);
+    res.json(updatedAnimal);
+  })
+})
+
+router.delete("/:id", function(req, res){
+  console.log(req.params.id);
+  Animal.remove({_id: req.params.id}, function(err, removedAnimal){
+    if (err) console.log(err);
+    res.json(removedAnimal);
+  })
 })
 
 app.use("/animals", router);
