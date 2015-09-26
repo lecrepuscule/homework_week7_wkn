@@ -39,7 +39,22 @@ router.get("/", function(req, res){
 })
 
 router.post("/", function(req, res){
-  
+  console.log(req.body);
+
+  var animal = Animal({
+    name: req.body.name,
+    breed: req.body.breed,
+    dob: req.body.dob,
+    gender: req.body.gender,
+    family: req.body.family,
+    status: req.body.status
+  });
+
+  animal.save(function(err, newAnimal){
+    if (err) console.log(err);
+    res.json(newAnimal);
+  })
+
 })
 
 app.use("/animals", router);
