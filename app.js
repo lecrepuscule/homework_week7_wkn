@@ -53,7 +53,7 @@ router.post("/", function(req, res){
 
   animal.save(function(err, newAnimal){
     if (err) console.log(err);
-    res.json(newAnimal);
+    res.json([newAnimal]);
   })
 })
 
