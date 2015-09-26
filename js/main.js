@@ -1,15 +1,22 @@
 var Animal = Animal || {};
 var View = View || {};
 
-// View = {
-//   initialise = function(){
-
-//   }
-// }
+View = {
+  initialise: function(){
+    $("#new-animal-form").on("submit", function(e){
+      e.preventDefault;
+      Animal.create($(this).serialize());
+    })
+  }
+}
 
 Animal = {
   all: function (){
     this.request("/animals", "get").done(this.appendAnimals);
+  },
+
+  create: function(animal){
+    this.request("/animals", "post", animal).done(this.appendAnimals);
   },
 
   request: function (url, method, data){
@@ -39,7 +46,7 @@ Animal = {
 
 $(document).on("ready", function(){
   Animal.all();
-  // View.initialise();
+  View.initialise();
 })
 
 
