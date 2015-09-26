@@ -19,14 +19,15 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname));
+
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
-
 app.get("/", function(req, res){
-  res.sendFile(path.join(__dirname + './views/index.html'))
+  res.render(path.join(__dirname + '/views/index.ejs'))
 });
 
 router.get("/", function(req, res){
