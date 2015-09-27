@@ -1,11 +1,11 @@
 var mongoose = require("mongoose");
 
 var animalSchema = new mongoose.Schema({
-  name: String,
-  breed: String,
-  dob: Date,
-  gender: String,
-  family: String,
+  name: {type: String, required: true, unique: true},
+  breed: {type: String, required: true},
+  dob: {type: Date, required: true},
+  gender: {type: String, required: true},
+  family: {type: String, required: true},
   status: String,
   updatedAt: {type: Date, default: Date.now}
 });
