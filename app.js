@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
-
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 app.engine('ejs', require('ejs').renderFile);
@@ -31,8 +30,6 @@ app.get("/", function(req, res){
 });
 
 router.get("/", function(req, res){
-  // res.json(Animal.find());
-
   Animal.find({}, function(err, animals) {
     if (err) console.log(err);
       res.json(animals);
