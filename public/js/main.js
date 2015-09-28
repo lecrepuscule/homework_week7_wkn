@@ -6,6 +6,7 @@ View = {
     $("#new-animal-form").on("submit", function(e){
       e.stopPropagation();
       e.preventDefault;
+      debugger;
       Animal.create($(this).serialize())
       .done($(this).trigger("reset"));
     })

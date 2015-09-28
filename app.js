@@ -19,14 +19,14 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname));
-app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(__dirname + "/public"));
+app.set('views', path.join(__dirname, 'public/views'));
 app.use(expressLayouts);
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
-  res.render(path.join(__dirname + '/views/index.ejs'))
+  res.render(path.join(__dirname + '/public/views/index.ejs'))
 });
 
 router.get("/", function(req, res){
