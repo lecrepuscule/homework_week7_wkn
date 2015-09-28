@@ -6,7 +6,6 @@ View = {
     $("#new-animal-form").on("submit", function(e){
       e.stopPropagation();
       e.preventDefault;
-      debugger;
       Animal.create($(this).serialize())
       .done($(this).trigger("reset"));
     })
@@ -26,7 +25,6 @@ View = {
 }
 
 Animal = {
-
   actions: {
     adopt: "adopted",
     abandon: "abandoned"
@@ -86,7 +84,7 @@ Animal = {
       animalTemplate = "<tr id='" + animal._id + "'>";
       animalTemplate += "<td>" + animal.name + "</td>";
       animalTemplate += "<td>" + animal.breed + "</td>";
-      animalTemplate += "<td>" + animal.dob + "</td>";
+      animalTemplate += "<td>" + (new Date(animal.dob).toDateString()) + "</td>";
       animalTemplate += "<td>" + animal.gender + "</td>";
       animalTemplate += "<td>" + animal.family + "</td>";
       animalTemplate += "<td class='js-update' data-action=" + availableAction + "><a href='#'>" + availableAction + "</a></td>";
